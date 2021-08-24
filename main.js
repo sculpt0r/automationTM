@@ -12,7 +12,7 @@ function getItemEntry() {
     return result;
 }
 
-const SCULPT0R = {
+window.SCULPT0R = {
     getTMIssueEntry: () => {
         console.log( getItemEntry() );
     }
