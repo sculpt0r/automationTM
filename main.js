@@ -7,13 +7,43 @@ function getItemEntry() {
     const TITLE_ELEMENT = document.querySelector('#partial-discussion-header > div.gh-header-show > div > h1 > span.js-issue-title.markdown-title');
     const TITLE = TITLE_ELEMENT.innerHTML;
 
-    const result = `[${ URL }](${ HASH_NUMBER }): ${ TITLE }`;
+    const result = `<a href="${ URL }">${ HASH_NUMBER }</a>: ${ TITLE }`;
 
     return result;
 }
 
+function addHelperButton() {
+
+    const TITLE_HEADER = document.querySelector('#partial-discussion-header > div.gh-header-show > div > h1');
+
+    TITLE_HEADER.insertAdjacentHTML(
+        'afterend',
+        `<button id='sculpt0rGetButton'>GET ENTRY</button>`
+    );
+
+    document.getElementById('sculpt0rGetButton').onclick = function() {
+        SCULPT0R.getTMIssueEntry();
+    }
+
+}
+
+addHelperButton();
+
 window.SCULPT0R = {
     getTMIssueEntry: () => {
-        console.log( getItemEntry() );
+        var type = "text/html";
+        var blob = new Blob([getItemEntry()], { type });
+        var data = [new ClipboardItem({ [type]: blob })];
+
+        navigator.clipboard.write(data).then(
+            function () {
+                console.log('OK');
+            /* success */
+            },
+            function () {
+                console.log('FAIL');
+            /* failure */
+            }
+        );
     }
 };
