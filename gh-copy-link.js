@@ -33,16 +33,16 @@ addHelperButton();
 window.SCULPT0R = {
 	getTMIssueEntry: () => {
 		var type = "text/html";
-		var blob = new Blob([getItemEntry()], { type });
-		var data = [new ClipboardItem({ [type]: blob })];
+		var blob = new Blob( [ getItemEntry() ], { type } );
+		var data = [ new ClipboardItem( { [type]: blob } ) ];
 
-		navigator.clipboard.write(data).then(
+		navigator.clipboard.write( data ).then(
 			function () {
-				console.log('OK');
+				console.log( 'OK' );
 			/* success */
 			},
 			function () {
-				console.log('FAIL');
+				console.log( 'FAIL' );
 			/* failure */
 			}
 		);
