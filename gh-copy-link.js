@@ -23,7 +23,7 @@ function addHelperButton() {
 	);
 
 	document.getElementById('sculpt0rGetButton').onclick = function() {
-		SCULPT0R.getTMIssueEntry();
+		SCULPT0R.copyIssueOrPrFormattedLink();
 	}
 
 }
@@ -31,7 +31,7 @@ function addHelperButton() {
 addHelperButton();
 
 window.SCULPT0R = {
-	getTMIssueEntry: () => {
+	copyIssueOrPrFormattedLink: () => {
 		var type = "text/html";
 		var blob = new Blob( [ getItemEntry() ], { type } );
 		var data = [ new ClipboardItem( { [type]: blob } ) ];
