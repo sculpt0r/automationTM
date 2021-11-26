@@ -8,7 +8,7 @@ function getItemEntry() {
 	const TITLE_ELEMENT = document.querySelector('#partial-discussion-header > div.gh-header-show > div > h1 > span.js-issue-title.markdown-title');
 	const TITLE = TITLE_ELEMENT.innerHTML;
 
-	const result = `<a href="${ URL }">${ HASH_NUMBER }</a>: ${ TITLE }`;
+	const result = `<a href="${ URL }">#${ HASH_NUMBER }</a>: ${ TITLE }`;
 
 	return result;
 }
