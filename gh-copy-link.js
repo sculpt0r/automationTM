@@ -8,7 +8,7 @@ function getItemEntry() {
 	const TITLE_ELEMENT = document.querySelector('#partial-discussion-header > div.gh-header-show > div > h1 > span.js-issue-title.markdown-title');
 	const TITLE = TITLE_ELEMENT.innerHTML;
 
-	const result = `<a href="${ URL }">#${ HASH_NUMBER }</a>: ${ TITLE }`;
+	const result = `<p><a href="${ URL }">#${ HASH_NUMBER }</a>: ${ TITLE }</p>`;
 
 	return result;
 }
@@ -19,32 +19,9 @@ function addHelperButton() {
 
 	TITLE_HEADER.insertAdjacentHTML(
 		'afterend',
-		`<button id='sculpt0rGetButton'>GET ENTRY</button>`
+		`${formattedLink}`
 	);
-
-	document.getElementById('sculpt0rGetButton').onclick = function() {
-		SCULPT0R.copyIssueOrPrFormattedLink();
-	}
-
 }
 
+const formattedLink = getItemEntry();
 addHelperButton();
-
-window.SCULPT0R = {
-	copyIssueOrPrFormattedLink: () => {
-		var type = "text/html";
-		var blob = new Blob( [ getItemEntry() ], { type } );
-		var data = [ new ClipboardItem( { [type]: blob } ) ];
-
-		navigator.clipboard.write( data ).then(
-			function () {
-				console.log( 'OK' );
-			/* success */
-			},
-			function () {
-				console.log( 'FAIL' );
-			/* failure */
-			}
-		);
-	}
-};
