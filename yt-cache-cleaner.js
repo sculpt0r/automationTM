@@ -1,4 +1,3 @@
-
 function clearStorage() {
 	window.sessionStorage.clear();
 	window.indexedDB.clear();
